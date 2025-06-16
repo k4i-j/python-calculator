@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python CLI Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Python CLI Calculator</h1>
+    <p>This is a basic command-line calculator built in Python to practice logic and conditionals.</p>
+
+    <pre><code class="language-python">
+// calculator.py
+
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    if y == 0:
+        return "Can't divide by 0"
+    return x / y
+
+print("Select operation:")
+print("1.Add 2.Subtract 3.Multiply 4.Divide")
+
+choice = input("Enter choice (1/2/3/4): ")
+a = float(input("First number: "))
+b = float(input("Second number: "))
+
+if choice == '1':
+    print(add(a, b))
+elif choice == '2':
+    print(subtract(a, b))
+elif choice == '3':
+    print(multiply(a, b))
+elif choice == '4':
+    print(divide(a, b))
+else:
+    print("Invalid input")
+    </code></pre>
+
+    <a href="calculator.py" download class="download-btn">Download Python File</a>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</body>
+</html>
