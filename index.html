@@ -1,25 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Python CLI Calculator</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <meta charset="UTF-8">
+  <title>Python-style Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #0f172a;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .calculator {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      width: 320px;
+    }
+
+    .display {
+      width: 100%;
+      height: 60px;
+      background: #0f172a;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 1.8rem;
+      padding: 10px;
+      text-align: right;
+      margin-bottom: 15px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    button {
+      padding: 20px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #334155;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #475569;
+    }
+
+    button.operator {
+      background-color: #2563eb;
+    }
+
+    button.operator:hover {
+      background-color: #1d4ed8;
+    }
+
+    button.equal {
+      background-color: #22c55e;
+      grid-column: span 2;
+    }
+
+    button.equal:hover {
+      background-color: #16a34a;
+    }
+
+    button.clear {
+      background-color: #ef4444;
+    }
+
+    button.clear:hover {
+      background-color: #dc2626;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Python CLI Calculator</h1>
-    <p>This is a basic command-line calculator built in Python to practice logic and conditionals.</p>
 
-    <pre><code class="language-python">
-// calculator.py
+  <div class="calculator">
+    <input type="text" id="display" class="display" disabled />
 
-def add(x, y):
-    return x + y
+    <div class="buttons">
+      <button onclick="append('7')">7</button>
+      <button onclick="append('8')">8</button>
+      <button onclick="append('9')">9</button>
+      <button class="operator" onclick="append('/')">÷</button>
 
-def subtract(x, y):
-    return x - y
+      <button onclick="append('4')">4</button>
+      <button onclick="append('5')">5</button>
+      <button onclick="append('6')">6</button>
+      <button class="operator" onclick="append('*')">×</button>
+
+      <button onclick="append('1')">1</button>
+      <button onclick="append('2')">2</button>
+      <button onclick="append('3')">3</button>
+      <button class="operator" onclick="append('-')">−</button>
+
+      <button onclick="append('0')">0</button>
+      <button onclick="append('.')">.</button>
+      <button class="equal" onclick="calculate()">=</button>
+      <button class="operator" onclick="append('+')">+</button>
+
+      <button class="clear" onclick="clearDisplay()">C</button>
+      <button onclick="backspace()">←</button>
+      <button onclick="append('(')">(</button>
+      <button onclick="append(')')">)</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+
+    function append(char) {
+      display.value += char;
+    }
+
+    function clearDisplay() {
+      display.value = '';
+    }
+
+    function backspace() {
+      display.value = display.value.slice(0, -1);
+    }
+
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch {
+        display.value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
 
 def multiply(x, y):
     return x * y
